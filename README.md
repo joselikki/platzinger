@@ -1,6 +1,20 @@
 # Platzinger
+#### Angular course project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+
+## Views
+
+*Login View
+*Home view / Dashboard
+    -user's friends
+*Friends search
+    -add friends button
+*chat view
+    -send messages, photographies, zZzZz
+    -show chat users
+*Profile view
+
 
 ## Development server
 
