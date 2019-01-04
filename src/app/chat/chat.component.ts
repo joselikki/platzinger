@@ -14,9 +14,10 @@ export class ChatComponent implements OnInit {
   friend: User;
   constructor(private activatedRoute: ActivatedRoute,
               private userService: UserService) { 
-    this.friendId = this.activatedRoute.snapshot.params['uid'];
-    this.friends = this.userService.getFriends();
+    this.friendId = this.activatedRoute.snapshot.params['uid'];  //brings id params in url
+    this.friends = this.userService.getFriends();    // Service to get friends list
     
+    // Find friend by id in friends list
     this.friend = this.friends.find(record =>{
       return record.uid == this.friendId;
     });
