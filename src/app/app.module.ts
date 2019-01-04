@@ -11,11 +11,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 
 // app routes url
+
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'chat', component: ChatComponent},
+  {path: 'chat/:uid', component: ChatComponent},
   {path: 'profile', component: ProfileComponent},
 ];
 
