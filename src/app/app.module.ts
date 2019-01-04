@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule }from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,8 +10,9 @@ import { ChatComponent } from './chat/chat.component';
 import { ProfileComponent } from './profile/profile.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
+import { SearchPipe } from './pipes/search.pipe';
 
-// app routes url
+// app urls
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -27,12 +29,14 @@ const appRoutes: Routes = [
     HomeComponent,
     ChatComponent,
     ProfileComponent,
-    MenuComponent
+    MenuComponent,
+    SearchPipe 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
