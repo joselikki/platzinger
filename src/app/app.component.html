@@ -1,4 +1,7 @@
 <!--Main menu -->
-<app-menu></app-menu>
-<!-- Tag router-->
-<router-outlet></router-outlet>
+<app-menu *ngIf="router.url != '/login'"></app-menu>
+
+<div [ngClass]="{'generalContent': router.url != '/login'}">
+    <!-- Tag router-->
+    <router-outlet></router-outlet>
+</div>
