@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthenticationService } from '../services/authentication.service';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,9 +13,50 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   operation: string = 'login';
 
-  constructor() { }
+  email: string = null;
+  password: string = null;
+  nick: string = null;
+
+  constructor(private authenticationService : AuthenticationService, 
+              private userService: UserService,
+              private router: Router) { }
+
 
   ngOnInit() {
+  }
+
+
+  //User loggin
+  login(){
+    this.authenticationService.loginWithEmail(this.email, this.password).then(data=>{
+      alert('Loggeado Correctamente')
+      console.log(data)
+      this.router.navigate(['home']);
+    }).catch( error =>{
+      alert('Ha ocurrido un error')
+      console.log(error)
+    })
+  }
+
+  //User register
+  register(){
+    this.authenticationService.registerWithEmail(this.email, this.password).then(data=>{
+      const user = {
+        uid : data.user.uid,
+        email : this.email,
+        nick : this.nick
+      };
+      this.userService.createUser(user).then((data2)=>{
+        alert('Registrado Correctamente')
+        console.log(data2)
+      }).catch((error)=>{
+        alert('Ha ocurrido un error')
+        console.log(error);
+      })
+    }).catch( error =>{
+      alert('Ha ocurrido un error')
+      console.log(error);
+    })
   }
 
 }

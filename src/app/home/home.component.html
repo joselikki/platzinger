@@ -12,7 +12,8 @@
           <div>
             <span>Online</span>
             <br>
-            <span> Escribe un mensaje personal</span>
+            <span> Escribe un mensaje personal</span> <br />
+            <a (click)="logout()" class="curpoint">Logout</a>
           </div>
         </div>
       </div>
@@ -30,7 +31,7 @@
       </div>
     </div>
     <hr class="marto15 marbo15">
-    <p>Amigos ({{friends.length}}/{{friends.length}})</p>
+    <p *ngIf="friends" >Amigos ({{friends.length}}/{{friends.length}})</p>
     <ng-container *ngFor=" let user of friends | search: query" >
       <ul >
         <li style="list-style: none;">
