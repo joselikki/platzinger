@@ -1,53 +1,30 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  friends: User[];
-  constructor() { 
-    let usuario1: User = {
-      nick: "Mike",
-      subnick: "hola",
-      age: 27,
-      email: "jose@gmail.com",
-      friend: true,
-      uid: 1
-    };
-    let usuario2: User = {
-      nick: 'Eduardo',
-      age: 24,
-      email: 'ed@aoe.aoe',
-      friend: true,
-      uid: 2
-    };
-    let usuario3: User = {
-      nick: 'Freddy',
-      age: 28,
-      email: 'fred@aoe.aoe',
-      friend: true,
-      uid: 3
-    };
-    let usuario4: User = {
-      nick: 'Yuliana',
-      age: 18,
-      email: 'yuli@aoe.aoe',
-      friend: true,
-      uid: 4
-    };
-    let usuario5: User = {
-      nick: 'Ricardo',
-      age: 17,
-      email: 'rick@aoe.aoe',
-      friend: false,
-      uid: 5
-    };
+  constructor(private angularFireDatabase: AngularFireDatabase) { }
 
-    this.friends = [usuario1, usuario2, usuario3, usuario4, usuario5];
+  //Get all users
+  getUsers(){
+    return this.angularFireDatabase.list('/users');
+  }
+  // Get user by id
+  getUserById(uid){
+    return this.angularFireDatabase.object('/users/' + uid);
+  }
 
+  //Create new user
+  createUser(user){
+    return this.angularFireDatabase.object('/users/' + user.uid).set(user);
   }
-  getFriends(){
-    return this.friends;
+
+  //Modify existing user
+  editUser(user){
+    return this.angularFireDatabase.object('/users/' + user.uid).set(user);
   }
+
 }
