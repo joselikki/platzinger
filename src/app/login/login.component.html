@@ -12,8 +12,8 @@
           <div class="center">
             <h3>Iniciar Sesión</h3>
           </div>
-          <p *ngIf="operation == 'register'" class="center">¿Ya tienes cuenta? Has <a class="curpoint" (click)="operation = 'login'">Login</a> </p>
-          <p *ngIf="operation == 'login'" class="center"> ¿No tienes cuenta? <a class="curpoint" (click)="operation = 'register'">Resgistrate</a> </p>
+          <p *ngIf="operation == 'register'" class="center">¿Ya tienes cuenta?  <a class="curpoint" (click)="operation = 'login'"> <strong> Has Login</strong>  </a> </p>
+          <p *ngIf="operation == 'login'" class="center"> ¿No tienes cuenta? <a class="curpoint" (click)="operation = 'register'"> <strong>Resgistrate</strong> </a> </p>
           <div class="borderedContainer">
             
             <input [(ngModel)]="email" class="form-control marbo15" type="email" placeholder="Ingresa email">
