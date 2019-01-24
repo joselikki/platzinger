@@ -4,7 +4,13 @@
       <div class="row" style="width: 90%;">
         <div class="col-md-auto">
           <div class="avatarFrameOnline">
-            <img src="assets/img/generic_avatar.png" id="homeAvatarPicture" />
+            <ng-container *ngIf="user; else noUser">
+              <img [src]=" user.avatar " id="homeAvatarPicture" />
+            </ng-container>
+            <ng-template #noUser>
+              <img  src="assets/img/generic_avatar.png" id="homeAvatarPicture" />             
+            </ng-template>
+            
           </div>
         </div>
         <div class="col" *ngIf="user">
