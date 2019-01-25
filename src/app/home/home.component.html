@@ -33,7 +33,7 @@
         <input class="form-control" type="text" placeholder="Buscar amigo" [(ngModel)]="query">
       </div>
       <div class="col-md-auto">
-        <img src="assets/img/logo_live_add.png" class="icon">
+        <img src="assets/img/logo_live_add.png" class="icon" (click)="open(content)">
       </div>
     </div>
     <hr class="marto15 marbo15">
@@ -52,5 +52,23 @@
   </div>
 </div>
     
-     
+<!-- Friend request modal -->
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agrega un amigo!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="">
+      <b>Ingresa Email de tu amigo</b> <br>
+      <input type="email" class="form-control" placeholder="Email" [(ngModel)]="friendEmail" (keyup.enter)="sendRequest()">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="sendRequest()">Enviar</button>
+  </div>
+</ng-template>
 

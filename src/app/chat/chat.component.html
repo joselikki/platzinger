@@ -1,4 +1,4 @@
-<div class="conversationContainer bluewhitebg">
+<div class="conversationContainer bluewhitebg" [ngClass]="{'shaker': shake}" >
   <div class="row" style="width: 99%; margin: 0 auto;">
     <div class="col-sm-3 maxwi300">
       <div id="conversationSidebar">
@@ -17,12 +17,17 @@
     </div>
     <div class="col-sm-9">
       <br />
-      <span class="friendName">{{ friend.nick }} <small>(online)</small> </span> 
+      <span class="friendName">Amigo 1 <small>(online)</small> </span> 
       <hr />
       <div class="vh55 overscroll pabo10" id="messageArea">
+          <div class="messageGroup" *ngFor="let m of conversation">
+            <b> {{getUserNickByID(m.sender)}} </b> dice: <br />
+            <span>{{m.text}}</span>
+
+          </div>
       </div>
       <div class="messageControlsContainer">
-        <textarea class="form-control" cols="30" rows="5"></textarea>
+        <textarea  [(ngModel)]="textMessage" (keyup.enter)='sendMessage()' class="form-control" cols="30" rows="5"></textarea>
         <div id="messageToolBar">
           <div class="item">
             <img src="assets/img/icons/regular_smile.gif" class="tool">
@@ -32,7 +37,7 @@
             <img src="assets/img/icons/wink_smile.gif" class="tool">
             <i name="caret-down"></i>
           </div>
-          <div class="item">
+          <div class="item" (click)="sendZumbido()" >
             <img src="assets/img/zumbido.png" class="tool">
           </div>
 
