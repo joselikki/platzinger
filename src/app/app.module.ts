@@ -19,6 +19,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AuthenticationGuard } from './services/authentication.guard';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 // app urls
 
@@ -45,6 +47,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    NgbModule,
     ImageCropperModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
