@@ -37,18 +37,16 @@
       </div>
     </div>
     <hr class="marto15 marbo15">
-    <p *ngIf="friends" >Amigos ({{friends.length}}/{{friends.length}})</p>
-    <ng-container *ngFor=" let user of friends | search: query" >
-      <ul >
-        <li style="list-style: none;">
-            <span class="curpoint" style="font-size: 0.9em;" routerLink="/chat/{{user.uid}}">
-              <img src="assets/img/logo_live_online.png" class="icon" >
-             <b> {{user.nick}} </b> - {{ user.subnick || 'no subnick' }} <small>{{user.email}}</small>
-            </span>
-          </li>
-        </ul>
-        
-      </ng-container>
+    <p *ngIf="user && user.friends" >Amigos ({{user.friends.length}}/{{user.friends.length}})</p>
+    
+    <div *ngIf="user">
+      <ng-container  >
+        <ul >
+          <app-contact class="col-md-12" *ngFor=" let user of user.friends | search: query" [uid]="user">
+          </app-contact>
+          </ul> 
+        </ng-container>
+      </div>
   </div>
 </div>
     
