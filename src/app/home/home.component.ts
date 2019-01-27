@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
     this.userService.getUsers().valueChanges().subscribe(
       (data: User[])=>{
         this.friends = data
+        
       }, 
       (error)=>{ 
       console.log(error)}
@@ -37,6 +38,10 @@ export class HomeComponent implements OnInit {
           this.userService.getUserById(status.uid).valueChanges().subscribe(
             (data: User)=>{
               this.user = data
+              if (this.user.friends){
+                this.user.friends = Object.values(this.user.friends)
+                console.log(this.user)
+              }
             }, 
             (error)=>{
               console.log(error)

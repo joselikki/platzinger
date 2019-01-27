@@ -1,0 +1,11 @@
+
+<div *ngIf="contact | search: query"  routerLink="/chat/{{contact.uid}}" >
+    
+    <li style="list-style: none;">
+      <span class="curpoint" style="font-size: 0.9em;">
+        <img src="assets/img/logo_live_online.png" class="icon">
+        <b> {{contact.nick}} </b> - {{ contact.subnick || 'no subnick' }} <small>{{contact.email}}</small>
+      </span>
+    </li>
+
+</div>

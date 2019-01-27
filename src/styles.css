@@ -79,7 +79,10 @@ input[type="file"]{
   cursor: pointer;
   border: 1px solid #8dd2f3;
 }
-
+.icon{
+    width: 30px;
+    cursor: pointer;
+}
 .shaker {
   animation: shake .5s;
   animation-iteration-count: infinite;
